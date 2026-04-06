@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/WorkoutTracker.Api/WorkoutTracker.Api.csproj" />
+    <Project Path="src/WorkoutTracker.Application/WorkoutTracker.Application.csproj" />
+    <Project Path="src/WorkoutTracker.Core/WorkoutTracker.Core.csproj" />
+    <Project Path="src/WorkoutTracker.Infrastructure/WorkoutTracker.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/WorkoutTracker.Tests/WorkoutTracker.Tests.csproj" />
+  </Folder>
+</Solution>
