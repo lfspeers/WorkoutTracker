@@ -3,8 +3,8 @@
 ## Overview
 | Metric | Count |
 |--------|-------|
-| Implemented Stories | 6 |
-| Completed Tasks | 18 |
+| Implemented Stories | 10 |
+| Completed Tasks | 28 |
 
 ---
 
@@ -77,7 +77,7 @@ Defined data access contracts in Core layer.
 
 ---
 
-## Epic 3: Infrastructure Layer (Data Access) - IN PROGRESS
+## Epic 3: Infrastructure Layer (Data Access) ✅ COMPLETE
 
 ### Story 3.1: Create Database Context ✅ (commit: 98ceebf)
 **Priority**: HIGH | **Tasks**: 2
@@ -104,6 +104,45 @@ Created Fluent API configurations for all entities.
 
 ---
 
+### Story 3.3: Implement Repositories ✅ (commit: 379ca86)
+**Priority**: HIGH | **Tasks**: 2
+
+Created concrete repository implementations in Infrastructure layer.
+
+**Completed:**
+- `Infrastructure/Repositories/ExerciseRepository.cs` - Implements IExerciseRepository
+- `Infrastructure/Repositories/WorkoutSessionRepository.cs` - Implements IWorkoutSessionRepository with eager loading
+- All methods async with CancellationToken support
+- Eager loading via Include/ThenInclude for full entity graphs
+
+---
+
+## Epic 4: Application Layer (Business Logic) - IN PROGRESS
+
+### Story 4.1: Create Exercise DTOs ✅ (commit: fce52ff)
+**Priority**: HIGH | **Tasks**: 3
+
+Created DTOs to separate API contracts from domain entities.
+
+**Completed:**
+- `Application/DTOs/Exercises/CreateExerciseRequest.cs` - [Required] Name and Category, max lengths
+- `Application/DTOs/Exercises/UpdateExerciseRequest.cs` - Nullable properties for partial updates
+- `Application/DTOs/Exercises/ExerciseResponse.cs` - Record type for responses
+
+### Story 4.2: Create WorkoutSession DTOs ✅
+**Priority**: HIGH | **Tasks**: 3
+
+Created nested DTOs for WorkoutSession, WorkoutExercise, and Set.
+
+**Completed:**
+- `Application/DTOs/WorkoutSessions/CreateSetRequest.cs` - SetNumber, Reps, Weight, IsWarmup, Notes
+- `Application/DTOs/WorkoutSessions/CreateWorkoutExerciseRequest.cs` - ExerciseId, Order, WeightUnit (regex validated), nested Sets
+- `Application/DTOs/WorkoutSessions/CreateWorkoutSessionRequest.cs` - PerformedAt, Duration, Notes, PerceivedExertion [Range(1,10)], nested Exercises
+- `Application/DTOs/WorkoutSessions/UpdateWorkoutSessionRequest.cs` - All nullable for partial updates
+- `Application/DTOs/WorkoutSessions/WorkoutSessionResponse.cs` - Full nested hierarchy: Session → Exercises (with Exercise name/category) → Sets
+
+---
+
 ## Commit Reference
 
 | Commit | Description |
@@ -112,3 +151,5 @@ Created Fluent API configurations for all entities.
 | 414f8a4 | Install NuGet packages |
 | 98ceebf | Add domain entities, repository interfaces, and DbContext |
 | 03f9bb9 | Add EF Core entity configurations with Fluent API |
+| 379ca86 | Add repository implementations for Exercise and WorkoutSession |
+| fce52ff | Add Exercise DTOs and CLAUDE.md, remove stub Class1 files |

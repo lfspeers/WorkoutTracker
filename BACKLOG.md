@@ -5,8 +5,8 @@
 |--------|-------|
 | Backlog Stories | 9 |
 | Estimated Tasks | 26 |
-| Completed Stories | 5 |
-| Next Up | Story 3.3: Implement Repositories |
+| Completed Stories | 8 |
+| Next Up | Story 4.3: Create Service Layer |
 
 ---
 
@@ -138,7 +138,7 @@
 
 ---
 
-## Epic 3: Infrastructure Layer (Data Access) - IN PROGRESS
+## Epic 3: Infrastructure Layer (Data Access) ✅ COMPLETE
 
 ### Story 3.1: Create Database Context ✅
 > Moved to FEATURES.md
@@ -150,70 +150,24 @@
 
 ---
 
-### Story 3.3: Implement Repositories ⬅️ NEXT
-**Priority**: HIGH | **Est. Tasks**: 2
-
-**As a** developer
-**I want** concrete repository implementations
-**So that** I can perform CRUD operations
-
-| Task | Description |
-|------|-------------|
-| 3.3.1 | Create `ExerciseRepository` implementing `IExerciseRepository` |
-| 3.3.2 | Create `WorkoutSessionRepository` implementing `IWorkoutSessionRepository` |
-
-**Acceptance Criteria:**
-- [ ] All interface methods implemented
-- [ ] Uses async/await properly
-- [ ] Eager loading for nested entities (WorkoutExercises, Sets)
-- [ ] Sets UpdatedAt on updates
+### Story 3.3: Implement Repositories ✅
+> Moved to FEATURES.md
 
 ---
 
-## Epic 4: Application Layer (Business Logic)
+## Epic 4: Application Layer (Business Logic) - IN PROGRESS
 
-### Story 4.1: Create Exercise DTOs
-**Priority**: HIGH | **Est. Tasks**: 3
-
-**As a** developer
-**I want** DTOs for the Exercise entity
-**So that** I separate my API contracts from domain entities
-
-| Task | Description |
-|------|-------------|
-| 4.1.1 | Create `CreateExerciseRequest` with validation attributes |
-| 4.1.2 | Create `UpdateExerciseRequest` with nullable properties |
-| 4.1.3 | Create `ExerciseResponse` record |
-
-**Acceptance Criteria:**
-- [ ] CreateExerciseRequest has [Required] Name, [Required] Category
-- [ ] Name max length 100, MuscleGroup max 50, Description max 500
-- [ ] Response DTOs use `record` type
+### Story 4.1: Create Exercise DTOs ✅
+> Moved to FEATURES.md
 
 ---
 
-### Story 4.2: Create WorkoutSession DTOs
-**Priority**: HIGH | **Est. Tasks**: 3
-
-**As a** developer
-**I want** DTOs for WorkoutSession and nested entities
-**So that** I can handle complex workout logging requests
-
-| Task | Description |
-|------|-------------|
-| 4.2.1 | Create `CreateWorkoutSessionRequest` with nested exercise/set DTOs |
-| 4.2.2 | Create `UpdateWorkoutSessionRequest` with nullable properties |
-| 4.2.3 | Create `WorkoutSessionResponse` with nested response DTOs |
-
-**Acceptance Criteria:**
-- [ ] CreateWorkoutSessionRequest supports nested WorkoutExercises with Sets
-- [ ] PerceivedExertion range 1-10
-- [ ] WeightUnit validated to "kg" or "lbs"
-- [ ] Response includes full hierarchy: Session → Exercises → Sets
+### Story 4.2: Create WorkoutSession DTOs ✅
+> Moved to FEATURES.md
 
 ---
 
-### Story 4.3: Create Service Layer
+### Story 4.3: Create Service Layer ⬅️ NEXT
 **Priority**: HIGH | **Est. Tasks**: 2
 
 **As a** developer
@@ -405,11 +359,11 @@
 2. Epic 2: Domain Layer (Stories 2.1 → 2.2) ✅ COMPLETE
    └── Define your core business model (4 entities)
 
-3. Epic 3: Infrastructure Layer (Stories 3.1 → 3.2 → 3.3) ⬅️ IN PROGRESS
-   └── Stories 3.1, 3.2 ✅ | Next: Story 3.3 (Repositories)
+3. Epic 3: Infrastructure Layer (Stories 3.1 → 3.2 → 3.3) ✅ COMPLETE
+   └── All stories complete
 
-4. Epic 4: Application Layer (Stories 4.1 → 4.2 → 4.3)
-   └── Add business logic and DTOs
+4. Epic 4: Application Layer (Stories 4.1 → 4.2 → 4.3) ⬅️ IN PROGRESS
+   └── Stories 4.1-4.2 ✅ | Next: Story 4.3 (Service Layer)
 
 5. Epic 6: Database Setup (Story 6.1)
    └── Create the database
@@ -434,22 +388,24 @@
 - [x] `Interfaces/IExerciseRepository.cs`
 - [x] `Interfaces/IWorkoutSessionRepository.cs`
 
-### Infrastructure Project (IN PROGRESS)
+### Infrastructure Project ✅ COMPLETE
 - [x] `Data/WorkoutDbContext.cs`
 - [x] `Data/Configurations/ExerciseConfiguration.cs`
 - [x] `Data/Configurations/WorkoutSessionConfiguration.cs`
 - [x] `Data/Configurations/WorkoutExerciseConfiguration.cs`
 - [x] `Data/Configurations/SetConfiguration.cs`
-- [ ] `Repositories/ExerciseRepository.cs` ⬅️ NEXT
-- [ ] `Repositories/WorkoutSessionRepository.cs`
+- [x] `Repositories/ExerciseRepository.cs`
+- [x] `Repositories/WorkoutSessionRepository.cs`
 
-### Application Project
-- [ ] `DTOs/Exercises/CreateExerciseRequest.cs`
-- [ ] `DTOs/Exercises/UpdateExerciseRequest.cs`
-- [ ] `DTOs/Exercises/ExerciseResponse.cs`
-- [ ] `DTOs/WorkoutSessions/CreateWorkoutSessionRequest.cs`
-- [ ] `DTOs/WorkoutSessions/UpdateWorkoutSessionRequest.cs`
-- [ ] `DTOs/WorkoutSessions/WorkoutSessionResponse.cs`
+### Application Project (IN PROGRESS)
+- [x] `DTOs/Exercises/CreateExerciseRequest.cs`
+- [x] `DTOs/Exercises/UpdateExerciseRequest.cs`
+- [x] `DTOs/Exercises/ExerciseResponse.cs`
+- [x] `DTOs/WorkoutSessions/CreateWorkoutSessionRequest.cs`
+- [x] `DTOs/WorkoutSessions/CreateWorkoutExerciseRequest.cs`
+- [x] `DTOs/WorkoutSessions/CreateSetRequest.cs`
+- [x] `DTOs/WorkoutSessions/UpdateWorkoutSessionRequest.cs`
+- [x] `DTOs/WorkoutSessions/WorkoutSessionResponse.cs`
 - [ ] `Services/IExerciseService.cs`
 - [ ] `Services/ExerciseService.cs`
 - [ ] `Services/IWorkoutSessionService.cs`
