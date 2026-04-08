@@ -3,8 +3,8 @@
 ## Overview
 | Metric | Count |
 |--------|-------|
-| Implemented Stories | 5 |
-| Completed Tasks | 16 |
+| Implemented Stories | 6 |
+| Completed Tasks | 18 |
 
 ---
 
